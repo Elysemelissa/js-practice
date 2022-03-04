@@ -71,3 +71,7 @@ strings
   .map((string) => string.toUpperCase())
   .sort()
   .filter((s) => s !== "I"); // filters out what returns false
+
+list.filter(function (person) {
+  person.jobTitle === "Engineer";
+});
