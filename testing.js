@@ -15,7 +15,16 @@ function addTwoToEveryNumberInTheList(list) {
 function findLargestNumber(list) {
   // return the largest number in array
 
+  // my solution
   return Math.max.apply(null, list);
+
+  // teachers solution
+  let largest = list[0];
+  for (let i = 0; i < list.length; i++) {
+    if (list[i] > largest) {
+      largest = list[i];
+    }
+  }
 }
 
 function makeDogObject() {
@@ -25,6 +34,7 @@ function makeDogObject() {
   //   has a color property of "white"
   //   has an age property of 6
 
+  // my solution same as teacher's solution
   return {
     name: "Fido",
     color: "white",
@@ -40,21 +50,55 @@ function getListOfNames(list) {
   // { name: "Some Person", jobTitle: "Boss Person", age: 30 }
   // return a list of all the workers' names
 
+  // my solution
   return list.map((person) => person.name);
+
+  // teachers solution
+  const names = list.map(({ name }) => name);
+  return names;
+
+  // or in for-loop
+  const names = [];
+  for (let i = 0; i < list.length; i++) {
+    names.push(list[i].name);
+  }
 }
 
 function getAverageAge(list) {
   // using the same list as above, get the average age of all the workers'
 
+  // my solution
   return (
     list.map((person) => person.age).reduce((a, b) => a + b, 0) / list.length
   );
+
+  // teacher's solution
+  let sum = 0;
+  for (let i = 0; i < list.length; i++) {
+    sum += list[i].age;
+  }
+  return sum / list.length;
 }
 
 function getAllEngineers(list) {
   // using the same list as above, return a list of all people who have the word "Engineer" in their jobTitle
 
-  return list.filter((person) => person.jobTitle.includes("Engineer"));
+  // my solution
+  return list
+    .filter((person) => person.jobTitle.includes("Engineer"))
+    .map((person) => person.name);
+
+  // teachers solution
+  const engineers = [];
+  for (let i = 0; i < list.length; i++) {
+    const person = list[i];
+    if (person.jobTitl.includes("Engineer")) {
+      engineers.push([person.name]);
+    }
+  }
+  return engineers;
+
+  // or my solution was his second suggestion
 }
 
 function sort(list) {
@@ -62,7 +106,20 @@ function sort(list) {
   // if you need more help, Google how to do bubble sort
   // you can sort, if you want to write it by hand, use bubble sort or insertion sort
 
+  // my solution
   return list.sort((a, b) => a - b);
+
+  // teachers solution
+  const sortedList = list.sort(function (num1, num2) {
+    if (num1 > num2) {
+      return 1;
+    } else if (num1 > num2) {
+      return -1;
+    }
+    return 0;
+  });
+
+  // or my solution
 }
 
 // unit tests
